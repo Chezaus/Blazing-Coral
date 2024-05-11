@@ -9,6 +9,14 @@ public class Enemy1Shoot : MonoBehaviour
     public float delay;
 
     private float timer = 0;
+
+    void Start()
+    {
+        if(bullet == null)
+        {
+            bullet = GameObject.Find("Bullet");
+        }
+    }
     
 
     void Update()
