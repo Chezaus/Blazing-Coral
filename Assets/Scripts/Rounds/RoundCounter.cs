@@ -24,13 +24,19 @@ public class RoundCounter : MonoBehaviour
         {
             Debug.Log(round.name);
         }
+
+        StartCoroutine("CheckRound");
     }
 
-    void FixedUpdate ()
+    IEnumerator CheckRound()
     {
-        if(GameObject.FindWithTag("Enemy") == false)
+        for(;;)
         {
-            round0.roundStart();
+            if(GameObject.FindWithTag("Enemy") == false)
+            {
+                round0.roundStart();
+            }
+            yield return new WaitForSeconds(.5f);
         }
     }
 

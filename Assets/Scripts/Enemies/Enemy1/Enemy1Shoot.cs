@@ -31,7 +31,7 @@ public class Enemy1Shoot : MonoBehaviour
     void randomShoot()
     {
         GameObject recentBullet = (GameObject)Instantiate(bullet, this.transform.position, Quaternion.identity);
-        recentBullet.GetComponent<Rigidbody2D>().velocity = new Vector2 (Random.Range(-1f,1f),Random.Range(-1f,0f)).normalized;
+        recentBullet.GetComponent<Rigidbody2D>().velocity = new Vector2 (Random.Range(-2f,2f),Random.Range(-2f,2f)).normalized;
         timer -= delay;
     }
 }

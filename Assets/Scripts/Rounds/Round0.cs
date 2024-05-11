@@ -8,7 +8,7 @@ public class Round0 : MonoBehaviour
 
    public void roundStart()
    {
-        GameObject recentSpawn = Instantiate(Enemy1,new Vector2(2,2), Quaternion.identity);
+        GameObject recentSpawn = Instantiate(Enemy1,new Vector2(-12,7), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (1,-1);
    }
 
