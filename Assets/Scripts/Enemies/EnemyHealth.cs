@@ -2,13 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1Health : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
+    public int health;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("playerBullet"))
         {
-            Destroy(this.gameObject);
+            health -= 1;
+
+            if(health <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
