@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 0}
-  delay: 0.1
+  delay: 0.2
   bulletSpeed: 2
 --- !u!114 &1824682487717822992
 MonoBehaviour:

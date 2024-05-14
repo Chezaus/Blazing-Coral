@@ -23,13 +23,16 @@ public class EnemyAim : MonoBehaviour
     {
         for(;;)
         {
-            GameObject recentBullet = (GameObject)Instantiate(bullet, this.transform.position, Quaternion.identity);
+            if(player)
+            {
+                GameObject recentBullet = (GameObject)Instantiate(bullet, this.transform.position, Quaternion.identity);
 
                 recentBullet.GetComponent<Rigidbody2D>().velocity = new Vector2 
                 (player.transform.position.x - this.gameObject.transform.position.x,
                 player.transform.position.y - this.gameObject.transform.position.y).normalized * bulletSpeed;
+            }
 
-                yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(delay);
         }
 
             

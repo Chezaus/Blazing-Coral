@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 0}
   delay: 1.5
-  bulletSpeed: 2
+  bulletSpeed: 2.5
 --- !u!114 &7597291704786799667
 MonoBehaviour:
   m_ObjectHideFlags: 0

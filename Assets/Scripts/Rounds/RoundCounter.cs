@@ -6,6 +6,8 @@ public class RoundCounter : MonoBehaviour
 {
     public int roundNumber;
 
+    public NewWaveUI UI;
+
     public GameObject Enemy1;
     public GameObject Enemy2;
     public GameObject Enemy3;
@@ -25,6 +27,7 @@ public class RoundCounter : MonoBehaviour
             {
                 roundNumber += 1;
                 Invoke("roundStart", 3);
+                UI.SetRoundNumber();
                 float timer = 0f;
                 while(timer < 3f)
                 {
@@ -49,7 +52,7 @@ public class RoundCounter : MonoBehaviour
             break;
                 case 3: round3();
             break;
-                case 4: round2();
+                case 4: round4();
             break;
                 case 5: round2();
             break;
@@ -126,6 +129,96 @@ public class RoundCounter : MonoBehaviour
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
     }
+
+    void round4()
+    {
+        GameObject recentSpawn;
+        recentSpawn = Instantiate(Enemy3,new Vector2(-7,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy3,new Vector2(-5,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy3,new Vector2(-3,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy3,new Vector2(-1,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy3,new Vector2(1,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy3,new Vector2(3,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy3,new Vector2(5,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy3,new Vector2(7,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        Invoke("round4b",3);
+    }
+
+    void round4b()
+    {
+        GameObject recentSpawn;
+
+        recentSpawn = Instantiate(Enemy2,new Vector2(-6,9), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
+
+        recentSpawn = Instantiate(Enemy2,new Vector2(-4,9), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
+
+        recentSpawn = Instantiate(Enemy2,new Vector2(-2,9), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
+
+        recentSpawn = Instantiate(Enemy2,new Vector2(0,9), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
+
+        recentSpawn = Instantiate(Enemy2,new Vector2(2,9), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
+
+        recentSpawn = Instantiate(Enemy2,new Vector2(4,9), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
+
+        recentSpawn = Instantiate(Enemy2,new Vector2(6,9), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
+
+        Invoke("round4c",3);
+
+    }
+
+    void round4c()
+    {
+        GameObject recentSpawn;
+        recentSpawn = Instantiate(Enemy1,new Vector2(-7,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy1,new Vector2(-5,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy1,new Vector2(-3,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy1,new Vector2(-1,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy1,new Vector2(1,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy1,new Vector2(3,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy1,new Vector2(5,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        recentSpawn = Instantiate(Enemy1,new Vector2(7,7), Quaternion.identity);
+        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+    }
+
+    
 
     
 }

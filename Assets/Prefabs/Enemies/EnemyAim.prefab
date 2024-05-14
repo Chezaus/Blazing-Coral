@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   bullet: {fileID: 3559383737753126842, guid: ebc93b2f6e09ced4db55354bc0d11621, type: 3}
-  bulletSpeed: 2
+  bulletSpeed: 3
   delay: 1
 --- !u!1 &1540812460944347487
 GameObject:

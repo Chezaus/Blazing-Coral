@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
         if(other.CompareTag("playerBullet"))
         {
             health -= 1;
+            Destroy(other.gameObject);
 
             if(health <= 0)
             {

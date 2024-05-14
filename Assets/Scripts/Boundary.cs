@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Boundary : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
             Destroy(other.gameObject);
         }
+        Debug.Log("HIT");
     }
 }
