@@ -21,6 +21,5 @@ public class PlayerDash : MonoBehaviour
         }
         dashing = false;
         cooldown += Time.deltaTime;
-        Debug.Log(cooldown);
     }
 }
