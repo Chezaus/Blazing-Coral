@@ -10,6 +10,5 @@ public class Boundary : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
-        Debug.Log("HIT");
     }
 }
