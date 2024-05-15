@@ -12,6 +12,8 @@ public class RoundCounter : MonoBehaviour
     public GameObject Enemy2;
     public GameObject Enemy3;
 
+    public GameObject miniBoss;
+
     private GameObject nextRound;
 
     void Start()
@@ -220,7 +222,7 @@ public class RoundCounter : MonoBehaviour
 
     void round5()
     {
-        
+        Instantiate(miniBoss,new Vector2(0f,6.5f), Quaternion.identity);
     }
 
     
