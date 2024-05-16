@@ -11,4 +11,12 @@ public class Boundary : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+        }
+    }
 }

@@ -217,6 +217,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   bullet: {fileID: 3559383737753126842, guid: ebc93b2f6e09ced4db55354bc0d11621, type: 3}
+  enemies:
+  - {fileID: 8031952633304338798, guid: 389ea70cbf50b3149adbdde47838c63c, type: 3}
+  - {fileID: 4734281054901367509, guid: 241d9303bcd3f80418be0005ce642f21, type: 3}
+  - {fileID: 1096340883264094673, guid: a5fa49e53d8ce5e4f9589e37178e5ad1, type: 3}
   health: {fileID: 8712755945851267045}
 --- !u!1 &2254004067874154918
 GameObject:

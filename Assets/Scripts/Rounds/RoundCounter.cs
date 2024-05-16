@@ -7,6 +7,7 @@ public class RoundCounter : MonoBehaviour
     public int roundNumber;
 
     public NewWaveUI UI;
+    public HealthBar bar;
 
     public GameObject Enemy1;
     public GameObject Enemy2;
@@ -30,6 +31,12 @@ public class RoundCounter : MonoBehaviour
                 roundNumber += 1;
                 Invoke("roundStart", 3);
                 UI.SetRoundNumber();
+
+                GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+                foreach(GameObject damage in bullets)
+                {
+                    Destroy(damage.gameObject);
+                }
                 float timer = 0f;
                 while(timer < 3f)
                 {
@@ -38,11 +45,15 @@ public class RoundCounter : MonoBehaviour
                 }
 
             }
+            if(roundNumber < 0)
+            {
+                roundNumber = 0;
+            }
             yield return new WaitForSeconds(.5f);
         }
     }
 
-    void roundStart()
+    public void roundStart()
     {
         switch(roundNumber)
         {
@@ -56,7 +67,7 @@ public class RoundCounter : MonoBehaviour
             break;
                 case 4: round4();
             break;
-                case 5: round2();
+                case 5: round5();
             break;
                 case 6: round2();
             break;
@@ -68,10 +79,10 @@ public class RoundCounter : MonoBehaviour
 
     void round0()
     {
-        GameObject recentSpawn = Instantiate(Enemy1,new Vector2(-8,7), Quaternion.identity);
+        GameObject recentSpawn = Instantiate(Enemy1,new Vector2(-7,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (1,-0.5f);
 
-        recentSpawn = Instantiate(Enemy1,new Vector2(8,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy1,new Vector2(7,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (-1,-0.5f);
     }
 
@@ -135,28 +146,28 @@ public class RoundCounter : MonoBehaviour
     void round4()
     {
         GameObject recentSpawn;
-        recentSpawn = Instantiate(Enemy3,new Vector2(-7,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy3,new Vector2(-7,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy3,new Vector2(-5,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy3,new Vector2(-5,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy3,new Vector2(-3,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy3,new Vector2(-3,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy3,new Vector2(-1,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy3,new Vector2(-1,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy3,new Vector2(1,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy3,new Vector2(1,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy3,new Vector2(3,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy3,new Vector2(3,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy3,new Vector2(5,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy3,new Vector2(5,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy3,new Vector2(7,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy3,new Vector2(7,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
         Invoke("round4b",3);
@@ -194,34 +205,35 @@ public class RoundCounter : MonoBehaviour
     void round4c()
     {
         GameObject recentSpawn;
-        recentSpawn = Instantiate(Enemy1,new Vector2(-7,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy1,new Vector2(-7,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy1,new Vector2(-5,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy1,new Vector2(-5,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy1,new Vector2(-3,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy1,new Vector2(-3,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy1,new Vector2(-1,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy1,new Vector2(-1,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy1,new Vector2(1,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy1,new Vector2(1,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy1,new Vector2(3,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy1,new Vector2(3,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy1,new Vector2(5,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy1,new Vector2(5,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
-        recentSpawn = Instantiate(Enemy1,new Vector2(7,7), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy1,new Vector2(7,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
     }
 
     void round5()
     {
+        bar.BossFind();
         Instantiate(miniBoss,new Vector2(0f,6.5f), Quaternion.identity);
     }
 
