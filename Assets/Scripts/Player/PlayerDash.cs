@@ -18,14 +18,18 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
+
+        collisionDetect.transform.position = new Vector2(character.transform.position.x + Input.GetAxisRaw("Horizontal"),
+        character.transform.position.y + Input.GetAxisRaw("Vertical"))* 3;
+
         if(Input.GetButtonDown("Dash") && cooldown >= 2f)
         {
-            collisionDetect.transform.position = new Vector2(character.transform.position.x + Input.GetAxisRaw("Horizontal") * 2,
-            character.transform.position.y + Input.GetAxisRaw("Vertical") * 3);
+            collisionDetect.transform.position = new Vector2(character.transform.position.x + Input.GetAxisRaw("Horizontal"),
+            character.transform.position.y + Input.GetAxisRaw("Vertical")).normalized  * 3;
             Invoke("dash",0.017f);
 
             cooldown = 0;
-            Debug.Log("DASH");
+            
         }
         dashing = false;
         cooldown += Time.deltaTime;

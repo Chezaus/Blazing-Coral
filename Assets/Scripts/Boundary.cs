@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boundary : MonoBehaviour
 {
+    public bool Destroy;
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Bullet"))
@@ -16,7 +17,13 @@ public class Boundary : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+            if(!Destroy)
+            {
+                other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+            }
+            else{
+                Destroy(other.gameObject);
+            }
         }
     }
 }

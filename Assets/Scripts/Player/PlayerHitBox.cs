@@ -10,7 +10,7 @@ public class PlayerHitBox : MonoBehaviour
     {
         if(other.CompareTag("Bullet"))
         {
-            
+            round.dead = true;
             GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
             
             foreach(GameObject damage in bullets)
@@ -19,7 +19,6 @@ public class PlayerHitBox : MonoBehaviour
             }
 
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            round.roundNumber -= 1;
             foreach(GameObject enemy in enemies)
             {
                 Destroy(enemy.gameObject);

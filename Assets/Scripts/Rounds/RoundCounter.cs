@@ -5,9 +5,11 @@ using UnityEngine;
 public class RoundCounter : MonoBehaviour
 {
     public int roundNumber;
+    public bool dead = false;
 
     public NewWaveUI UI;
     public HealthBar bar;
+    public GameObject healthUI;
 
     public GameObject Enemy1;
     public GameObject Enemy2;
@@ -28,8 +30,11 @@ public class RoundCounter : MonoBehaviour
         {
             if(GameObject.FindWithTag("Enemy") == false)
             {
-                roundNumber += 1;
                 Invoke("roundStart", 3);
+                if(!dead)
+                {
+                    roundNumber += 1;
+                }
                 UI.SetRoundNumber();
 
                 GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
@@ -55,6 +60,7 @@ public class RoundCounter : MonoBehaviour
 
     public void roundStart()
     {
+        dead = false;
         switch(roundNumber)
         {
                 case 0: round0();
@@ -119,10 +125,10 @@ public class RoundCounter : MonoBehaviour
         recentSpawn = Instantiate(Enemy1,new Vector2(7,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (-1,-1);
 
-        recentSpawn = Instantiate(Enemy1,new Vector2(6,9), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy1,new Vector2(6,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
 
-        recentSpawn = Instantiate(Enemy1,new Vector2(-6,9), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy1,new Vector2(-6,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
     }
 
@@ -177,25 +183,16 @@ public class RoundCounter : MonoBehaviour
     {
         GameObject recentSpawn;
 
-        recentSpawn = Instantiate(Enemy2,new Vector2(-6,9), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy2,new Vector2(-6,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
 
-        recentSpawn = Instantiate(Enemy2,new Vector2(-4,9), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy2,new Vector2(-2,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
 
-        recentSpawn = Instantiate(Enemy2,new Vector2(-2,9), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy2,new Vector2(2,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
 
-        recentSpawn = Instantiate(Enemy2,new Vector2(0,9), Quaternion.identity);
-        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
-
-        recentSpawn = Instantiate(Enemy2,new Vector2(2,9), Quaternion.identity);
-        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
-
-        recentSpawn = Instantiate(Enemy2,new Vector2(4,9), Quaternion.identity);
-        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
-
-        recentSpawn = Instantiate(Enemy2,new Vector2(6,9), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy2,new Vector2(6,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
 
         Invoke("round4c",3);
@@ -233,8 +230,10 @@ public class RoundCounter : MonoBehaviour
 
     void round5()
     {
-        bar.BossFind();
         Instantiate(miniBoss,new Vector2(0f,6.5f), Quaternion.identity);
+        healthUI.SetActive(true);
+        bar = healthUI.GetComponent<HealthBar>();
+        bar.BossFind();
     }
 
     

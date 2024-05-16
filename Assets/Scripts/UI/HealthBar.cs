@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public GameObject healthUI;
+    public Image healthUI;
+    public Image healthUI2;
     public MiniBossHealth health;
     float value;
     [SerializeField] Image bar;
@@ -22,20 +23,23 @@ public class HealthBar : MonoBehaviour
     {
         if(health)
         {
-            healthUI.SetActive(true);
+            healthUI.color = new Color32((byte)255 , (byte)255 , (byte)255 , (byte)255);
+            healthUI2.color = new Color32((byte)255 , (byte)255 , (byte)255 , (byte)255);
             if(health.health < 0)  {value = 1;}
             else{value = (float)health.health/600;}
 
             bar.fillAmount = value;
         }
         else{
-            healthUI.SetActive(false);
+           healthUI.color = new Color32((byte)255 , (byte)255 , (byte)255 , (byte)0);
+           healthUI2.color = new Color32((byte)255 , (byte)255 , (byte)255 , (byte)0);
         }
     }
 
     public void BossFind()
     {
-        health = GameObject.Find("MiniBoss").GetComponent<MiniBossHealth>();
+        health = GameObject.Find("MiniBoss(Clone)").GetComponent<MiniBossHealth>();
+        Debug.Log("BOSS FIND ACTIVE");
     }
 
 }

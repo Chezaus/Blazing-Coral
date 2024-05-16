@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed11e5e936dd3da46a979915a14b2f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Destroy: 0
 --- !u!61 &10178579
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -371,7 +372,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -462,7 +463,7 @@ Transform:
   m_GameObject: {fileID: 36231295}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 4.34, z: 0}
+  m_LocalPosition: {x: 3.86, y: 3.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -648,6 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed11e5e936dd3da46a979915a14b2f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Destroy: 0
 --- !u!50 &50784333
 Rigidbody2D:
   serializedVersion: 4
@@ -951,7 +953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1085751801}
   bulletSpeed: 7.5
-  fireDelay: 0.25
+  fireDelay: 0.01
 --- !u!1 &67740905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,6 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed11e5e936dd3da46a979915a14b2f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Destroy: 1
 --- !u!61 &67740909
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1314,6 +1317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed11e5e936dd3da46a979915a14b2f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Destroy: 0
 --- !u!50 &196871936
 Rigidbody2D:
   serializedVersion: 4
@@ -1415,9 +1419,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cd6af740d52604da67271f4bbe7f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundNumber: -1
+  roundNumber: 4
+  dead: 0
   UI: {fileID: 1335770971}
   bar: {fileID: 1743893668}
+  healthUI: {fileID: 1743893666}
   Enemy1: {fileID: 8031952633304338798, guid: 389ea70cbf50b3149adbdde47838c63c, type: 3}
   Enemy2: {fileID: 4734281054901367509, guid: 241d9303bcd3f80418be0005ce642f21, type: 3}
   Enemy3: {fileID: 1096340883264094673, guid: a5fa49e53d8ce5e4f9589e37178e5ad1, type: 3}
@@ -1860,6 +1866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1185248689}
   - component: {fileID: 1185248690}
+  - component: {fileID: 1185248691}
   m_Layer: 7
   m_Name: CollisionDetect
   m_TagString: Untagged
@@ -1899,6 +1906,58 @@ MonoBehaviour:
   collisionDetect: {fileID: 1185248688}
   empty: {fileID: 6649494104698183557, guid: 76d2906bc7ab25c43851dfc1ebf41927, type: 3}
   dashing: 1
+--- !u!212 &1185248691
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185248688}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 137225827
+  m_SortingLayer: 6
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2413806693520163455, guid: e22cd61b1f0614a48a88a6d7420020d5, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.6313726}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1335770967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,7 +2232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9955a72944ba2d842b33e459b708a856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthUI: {fileID: 466710378}
+  healthUI: {fileID: 1743893669}
+  healthUI2: {fileID: 1526361254}
   health: {fileID: 0}
   bar: {fileID: 1743893669}
 --- !u!114 &1743893669

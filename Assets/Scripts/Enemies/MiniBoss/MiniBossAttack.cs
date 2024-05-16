@@ -9,7 +9,6 @@ public class MiniBossAttack : MonoBehaviour
     public GameObject[] enemies;
     public MiniBossHealth health;
 
-    private int phase;
     private bool started = false;
 
     void Start()
@@ -28,16 +27,12 @@ public class MiniBossAttack : MonoBehaviour
     {
         for(;;)
         {
-            if(health.health >= 400)
-            {
-                phase = 1;
-            }
 
             if(health.health >= 200 && health.health <= 400 && !started)
             {
-                phase = 2;
                 started = true;
                 StartCoroutine("SpawnEnemy");
+                StartCoroutine("OcillatingShoot");
             }
 
             yield return new WaitForSeconds(0.5f); 
@@ -93,5 +88,23 @@ public class MiniBossAttack : MonoBehaviour
             }
             yield return new WaitForSeconds(Random.Range(3f,6f));
         }
+    }
+
+    IEnumerator OcillatingShoot()
+    {
+        for(;;)
+        {
+            for(float i = -4f; i<4f; i += 0.05f)
+            {
+                GameObject recentBullet = (GameObject)Instantiate(bullet, this.gameObject.transform.position,Quaternion.identity);
+
+                recentBullet.GetComponent<Rigidbody2D>().velocity = new Vector2 (i - this.gameObject.transform.position.x,i*i -this.gameObject.transform.position.y).normalized * 3;
+
+                yield return new WaitForSeconds(0.1f);
+            }
+
+            yield return new WaitForSeconds(Random.Range(1f,10f));
+        }
+        
     }
 }
