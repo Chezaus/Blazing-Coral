@@ -19,8 +19,13 @@ public class PlayerDash : MonoBehaviour
     void Update()
     {
 
-        collisionDetect.transform.position = new Vector2(character.transform.position.x + Input.GetAxisRaw("Horizontal"),
-        character.transform.position.y + Input.GetAxisRaw("Vertical"))* 3;
+        collisionDetect.transform.position = new Vector2(character.transform.position.x + Input.GetAxisRaw("Horizontal") *3,
+        character.transform.position.y + Input.GetAxisRaw("Vertical") *3);
+
+        if(Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0 )
+        {
+            collisionDetect.transform.position = character.transform.position;
+        }
 
         if(Input.GetButtonDown("Dash") && cooldown >= 2f)
         {
@@ -28,7 +33,7 @@ public class PlayerDash : MonoBehaviour
             character.transform.position.y + Input.GetAxisRaw("Vertical")).normalized  * 3;
             Invoke("dash",0.017f);
 
-            cooldown = 0;
+            
             
         }
         dashing = false;
@@ -39,6 +44,7 @@ public class PlayerDash : MonoBehaviour
     {
         if(safe)
         {
+            cooldown = 0;
             GameObject recentEmpty = Instantiate(empty,character.gameObject.transform.position,Quaternion.identity);
             character.gameObject.transform.position = collisionDetect.transform.position;
             foreach (Transform child in empty.gameObject.transform)
@@ -54,7 +60,7 @@ public class PlayerDash : MonoBehaviour
 
    void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Boundary"))
+        if(other.gameObject.CompareTag("Boundary") || other.gameObject.CompareTag("Player"))
         {
             safe = false;
         }

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHitBox : MonoBehaviour
 {
     
     public RoundCounter round;
+    public int hp = 3;
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Bullet"))
@@ -25,6 +27,11 @@ public class PlayerHitBox : MonoBehaviour
             }
             
             this.gameObject.transform.position = new Vector2(0,-6);
+            hp -= 1;
+            if(hp <= 0)
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 }
