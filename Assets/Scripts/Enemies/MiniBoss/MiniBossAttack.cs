@@ -10,6 +10,7 @@ public class MiniBossAttack : MonoBehaviour
     public MiniBossHealth health;
 
     private bool started = false;
+    private bool started2 = false;
 
     void Start()
     {
@@ -33,6 +34,12 @@ public class MiniBossAttack : MonoBehaviour
                 started = true;
                 StartCoroutine("SpawnEnemy");
                 StartCoroutine("OcillatingShoot");
+            }
+
+            if(health.health < 200 && !started2)
+            {
+                started2 = true;
+                StartCoroutine("RandomLaser");
             }
 
             yield return new WaitForSeconds(0.5f); 
@@ -94,11 +101,17 @@ public class MiniBossAttack : MonoBehaviour
     {
         for(;;)
         {
-            for(float i = -4f; i<4f; i += 0.05f)
+            int k = Random.Range(-2,3);
+            for(float i = -5f; i<5f; i += 0.05f)
             {
-                GameObject recentBullet = (GameObject)Instantiate(bullet, this.gameObject.transform.position,Quaternion.identity);
+                if(i < k || i > k + 1)
+                {
+                    GameObject recentBullet = (GameObject)Instantiate(bullet, this.gameObject.transform.position,Quaternion.identity);
 
-                recentBullet.GetComponent<Rigidbody2D>().velocity = new Vector2 (i - this.gameObject.transform.position.x,i*i -this.gameObject.transform.position.y).normalized * 3;
+                    recentBullet.GetComponent<Rigidbody2D>().velocity = new Vector2 
+                    (i - this.gameObject.transform.position.x,i*i -this.gameObject.transform.position.y).normalized * 3;
+                }
+                
 
                 yield return new WaitForSeconds(0.1f);
             }
@@ -108,5 +121,25 @@ public class MiniBossAttack : MonoBehaviour
         
     }
 
-    
+    IEnumerator RandomLaser()
+    {
+        for(;;)
+        {
+            float k = Random.Range(-4f,4f);
+            for(int j = 0; j<50; j++)
+            {
+                GameObject recentBullet = (GameObject)Instantiate(bullet, this.gameObject.transform.position,Quaternion.identity);
+
+                recentBullet.GetComponent<Rigidbody2D>().velocity = new Vector2 
+                (k - this.gameObject.transform.position.x,k*k -this.gameObject.transform.position.y).normalized * 5;
+                Debug.Log("LASER");
+                yield return new WaitForSeconds(0.1f);
+            }
+
+            yield return new WaitForSeconds(Random.Range(1f,10f));
+            
+        }
+    }
+
+
 }

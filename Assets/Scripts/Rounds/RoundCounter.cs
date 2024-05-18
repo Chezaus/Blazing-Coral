@@ -183,16 +183,10 @@ public class RoundCounter : MonoBehaviour
     {
         GameObject recentSpawn;
 
-        recentSpawn = Instantiate(Enemy2,new Vector2(-6,6), Quaternion.identity);
-        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
-
         recentSpawn = Instantiate(Enemy2,new Vector2(-2,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
 
         recentSpawn = Instantiate(Enemy2,new Vector2(2,6), Quaternion.identity);
-        recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
-
-        recentSpawn = Instantiate(Enemy2,new Vector2(6,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
 
         Invoke("round4c",3);

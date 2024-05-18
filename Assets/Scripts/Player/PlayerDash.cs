@@ -29,6 +29,7 @@ public class PlayerDash : MonoBehaviour
 
         if(Input.GetButtonDown("Dash") && cooldown >= 2f)
         {
+            safe = true;
             collisionDetect.transform.position = new Vector2(character.transform.position.x + Input.GetAxisRaw("Horizontal"),
             character.transform.position.y + Input.GetAxisRaw("Vertical")).normalized  * 3;
             Invoke("dash",0.017f);
