@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoundCounter : MonoBehaviour
 {
@@ -75,9 +76,7 @@ public class RoundCounter : MonoBehaviour
             break;
                 case 5: round5();
             break;
-                case 6: round2();
-            break;
-                case 7: round2();
+                case 6: SceneManager.LoadScene("win");
             break;
 
         }

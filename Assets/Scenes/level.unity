@@ -955,7 +955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1085751801}
   bulletSpeed: 7.5
-  fireDelay: 0.01
+  fireDelay: 0.2
 --- !u!1 &67740905
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,7 +2311,7 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: e22cd61b1f0614a48a88a6d7420020d5, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.6313726}
+  m_Color: {r: 1, g: 0.88550174, b: 0, a: 0.6313726}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
