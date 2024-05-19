@@ -21,6 +21,7 @@ public class RoundCounter : MonoBehaviour
     public GameObject miniBoss;
 
     private GameObject nextRound;
+    private bool boss;
 
     void Start()
     {
@@ -52,6 +53,10 @@ public class RoundCounter : MonoBehaviour
                     timer += Time.deltaTime;
                 }
 
+            }
+            if(roundNumber == 5 && GameObject.Find("MiniBoss(Clone)") == null && boss) 
+            {
+                SceneManager.LoadScene("win");
             }
             if(roundNumber < 0)
             {
@@ -244,6 +249,7 @@ public class RoundCounter : MonoBehaviour
         Instantiate(miniBoss,new Vector2(0f,6.5f), Quaternion.identity);
         healthUI.SetActive(true);
         bar = healthUI.GetComponent<HealthBar>();
+        boss = true;
         bar.BossFind();
 
         boom.Play();

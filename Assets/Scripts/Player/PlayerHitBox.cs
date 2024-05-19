@@ -8,6 +8,7 @@ public class PlayerHitBox : MonoBehaviour
     public GameObject ui;
     public RoundCounter round;
     public int hp = 3;
+    public AudioSource deathSound;
 
     private bool debugMode = false;
 
@@ -20,6 +21,7 @@ public class PlayerHitBox : MonoBehaviour
         if(other.CompareTag("Bullet") && !debugMode)
         {
             round.dead = true;
+            deathSound.Play();
             GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
             
             foreach(GameObject damage in bullets)

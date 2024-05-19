@@ -136,7 +136,7 @@ public class MiniBossAttack : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
             }
 
-            yield return new WaitForSeconds(Random.Range(1f,10f));
+            yield return new WaitForSeconds(Random.Range(1f,5f));
             
         }
     }

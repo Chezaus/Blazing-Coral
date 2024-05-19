@@ -6,6 +6,7 @@ public class PlayerDash : MonoBehaviour
 {
     public Rigidbody2D character;
     public GameObject bullet;
+    public AudioSource dashSound;
 
     public GameObject collisionDetect;
     public GameObject empty;
@@ -48,6 +49,7 @@ public class PlayerDash : MonoBehaviour
             cooldown = 0;
             GameObject recentEmpty = Instantiate(empty,character.gameObject.transform.position,Quaternion.identity);
             character.gameObject.transform.position = collisionDetect.transform.position;
+            dashSound.Play();
             foreach (Transform child in empty.gameObject.transform)
             {
                 GameObject recentBullet = (GameObject)Instantiate(bullet, recentEmpty.transform.position, Quaternion.identity);
