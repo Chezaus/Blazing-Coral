@@ -5,11 +5,14 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public int health;
+    public AudioSource hit;
     SpriteRenderer colour;
 
     void Start()
     {
         colour = this.gameObject.GetComponent<SpriteRenderer>();
+
+        hit = GameObject.Find("Hit").GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -17,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
         if(other.CompareTag("playerBullet"))
         {
             health -= 1;
+            hit.Play();
             Invoke("FadeIn",0);
             Destroy(other.gameObject);
 
@@ -29,12 +33,12 @@ public class EnemyHealth : MonoBehaviour
 
     void FadeIn()
     {
-        colour.color = new Color32((byte)255 , (byte)255 , (byte)255 , (byte)255);
+        colour.color = new Color32((byte)255 , (byte)0 , (byte)0 , (byte)255);
         Invoke("FadeOut",0.1f);
     }
 
     void FadeOut()
     {
-        colour.color = new Color32((byte)255, (byte)0 , (byte)0 , (byte)255); 
+        colour.color = new Color32((byte)255, (byte)255 , (byte)255 , (byte)255); 
     }
 }

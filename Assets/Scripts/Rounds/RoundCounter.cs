@@ -10,6 +10,8 @@ public class RoundCounter : MonoBehaviour
 
     public NewWaveUI UI;
     public HealthBar bar;
+    public AudioSource splash;
+    public AudioSource boom;
     public GameObject healthUI;
 
     public GameObject Enemy1;
@@ -89,6 +91,8 @@ public class RoundCounter : MonoBehaviour
 
         recentSpawn = Instantiate(Enemy1,new Vector2(7,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (-1,-0.5f);
+
+        splash.Play();
     }
 
     void round1()
@@ -98,6 +102,8 @@ public class RoundCounter : MonoBehaviour
 
         recentSpawn = Instantiate(Enemy2,new Vector2(8,5), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
+
+        splash.Play();
     }
 
     void round2()
@@ -113,6 +119,9 @@ public class RoundCounter : MonoBehaviour
 
         recentSpawn = Instantiate(Enemy1,new Vector2(8,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (-1,-1);
+
+        splash.Play();
+
         Invoke("round2b",3);
     }
 
@@ -129,6 +138,8 @@ public class RoundCounter : MonoBehaviour
 
         recentSpawn = Instantiate(Enemy1,new Vector2(-6,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
+
+        splash.Play();
     }
 
     void round3()
@@ -146,6 +157,7 @@ public class RoundCounter : MonoBehaviour
         recentSpawn = Instantiate(Enemy2,new Vector2(2,5), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
+        splash.Play();
     }
 
     void round4()
@@ -175,6 +187,8 @@ public class RoundCounter : MonoBehaviour
         recentSpawn = Instantiate(Enemy3,new Vector2(7,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
+        splash.Play();
+
         Invoke("round4b",3);
     }
 
@@ -182,11 +196,13 @@ public class RoundCounter : MonoBehaviour
     {
         GameObject recentSpawn;
 
-        recentSpawn = Instantiate(Enemy2,new Vector2(-2,6), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy2,new Vector2(-2,5), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
 
-        recentSpawn = Instantiate(Enemy2,new Vector2(2,6), Quaternion.identity);
+        recentSpawn = Instantiate(Enemy2,new Vector2(2,5), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,-1);
+
+        splash.Play();
 
         Invoke("round4c",3);
 
@@ -219,6 +235,8 @@ public class RoundCounter : MonoBehaviour
         recentSpawn = Instantiate(Enemy1,new Vector2(7,6), Quaternion.identity);
         recentSpawn.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,0);
 
+        splash.Play();
+
     }
 
     void round5()
@@ -227,6 +245,8 @@ public class RoundCounter : MonoBehaviour
         healthUI.SetActive(true);
         bar = healthUI.GetComponent<HealthBar>();
         bar.BossFind();
+
+        boom.Play();
     }
 
     
